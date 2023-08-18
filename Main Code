@@ -82,7 +82,7 @@ def df_to_windowed_df(dataframe, first_date_str, last_date_str, n=3):
 # Start day second time around: '2003-03-25'
 windowed_df = df_to_windowed_df(df, 
                                 '2003-03-25', 
-                                '2022-03-23', 
+                                '2010-03-23', 
                                 n=3)
 windowed_df
 
