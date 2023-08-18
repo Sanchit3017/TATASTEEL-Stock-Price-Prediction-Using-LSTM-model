@@ -1,0 +1,32 @@
+Certainly! The provided code is for building and training an LSTM (Long Short-Term Memory) neural network for time series forecasting using historical stock prices of TATASTEEL. Here's a short summary of what each part of the code does:
+
+1. **Data Loading and Preprocessing**:
+   - Reads the stock price data from a CSV file ('TATASTEEL.csv') and extracts the 'Date' and 'Close' columns.
+   - Converts the 'Date' column to datetime format and sets it as the DataFrame index.
+   - Plots the closing prices over time using Matplotlib.
+
+2. **Windowed Dataset Creation**:
+   - Defines a function (`df_to_windowed_df`) that creates a windowed dataset for training the LSTM model.
+   - Iterates through the dataset with a sliding window of size 'n+1', where 'n' is a parameter.
+   - Generates features ('X') and target values ('Y') for each window, where 'X' contains 'n' historical closing prices and 'Y' contains the next closing price.
+   - Creates a DataFrame with target dates, historical closing prices ('X'), and next closing prices ('Y').
+
+3. **Data Transformation**:
+   - Defines a function (`windowed_df_to_date_X_y`) that transforms the windowed DataFrame into suitable input arrays for the LSTM model.
+   - Reshapes the middle matrix of historical closing prices to a 3D array to match the expected input shape of the LSTM model.
+
+4. **Data Splitting**:
+   - Splits the dataset into training, validation, and test sets based on the provided percentages.
+
+5. **Model Building and Training**:
+   - Imports necessary libraries from TensorFlow/Keras.
+   - Creates a sequential neural network model with an LSTM layer and several fully connected (dense) layers.
+   - Compiles the model using the mean squared error (MSE) loss function and the Adam optimizer.
+   - Trains the model on the training data while monitoring the mean absolute error (MAE) on the validation set.
+
+6. **Prediction and Visualization**:
+   - Makes predictions using the trained model on the training, validation, and test sets.
+   - Plots the actual observations and the model predictions for each dataset.
+   - Performs recursive predictions where the model's predictions are used as inputs for making subsequent predictions, and plots these recursive predictions.
+
+Overall, this code defines and trains an LSTM model for predicting the next closing price of TATASTEEL stock based on historical closing prices. It demonstrates the process of data loading, preprocessing, dataset creation, model construction, training, and prediction visualization.
